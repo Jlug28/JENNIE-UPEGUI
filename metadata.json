@@ -1,0 +1,6 @@
+{
+  "name": "SENA Inducción & Reglamento del Aprendiz",
+  "description": "Plataforma gamificada de inducción y aprendizaje interactivo sobre el Reglamento del Aprendiz SENA (Acuerdo No. 009 de 2024, D.O. 52.947 y Mod. Acuerdo 0002 de 2026), derechos, deberes, dilemas éticos y certificación verificable.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
