@@ -3,6 +3,7 @@ import { Award, Shield, Moon, Sun, ExternalLink, Share2, Eye, UserCheck, KeyRoun
 import { InductionProgress } from '../types/induction';
 import { useAutoSync } from '../context/AutoSyncContext';
 import { SENA_AVATARS } from '../data/avatars';
+import { useLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
   userRole: 'instructor' | 'aprendiz';
@@ -31,6 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const isCertified = Boolean(progress.certificateId);
   const { user, sheetInfo, syncStatus, connectGoogleDrive } = useAutoSync();
+  const { language, setLanguage } = useLanguage();
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
@@ -167,6 +169,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             ) : (
               <Moon className="w-4 h-4 text-slate-700 transition-transform hover:-rotate-12" />
             )}
+          </button>
+
+          {/* Language Toggle */}
+          <button
+            onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+            className="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700/80 transition-all focus:outline-none flex items-center gap-1 shadow-xs"
+            title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+            aria-label="Toggle language"
+          >
+            <span>🌐</span>
+            <span>{language === 'es' ? 'EN' : 'ES'}</span>
           </button>
 
           {/* INSTRUCTOR EXCLUSIVE CONTROLS */}

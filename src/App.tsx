@@ -19,6 +19,7 @@ import { RoleAuthModal } from './components/RoleAuthModal';
 import { RoleSelectionLanding } from './components/RoleSelectionLanding';
 import { AvatarGamifiedExercise } from './components/AvatarGamifiedExercise';
 import { AutoSyncProvider } from './context/AutoSyncContext';
+import { LanguageProvider } from './context/LanguageContext';
 import { Shield, Eye, ArrowRight, KeyRound, LogOut } from 'lucide-react';
 
 import {
@@ -397,7 +398,8 @@ export default function App() {
   };
 
   return (
-    <AutoSyncProvider currentProgress={progress}>
+    <LanguageProvider>
+      <AutoSyncProvider currentProgress={progress}>
       {/* If user has not selected role and started session, show Role Selection Landing */}
       {!hasActiveSession ? (
         <RoleSelectionLanding
@@ -652,6 +654,7 @@ export default function App() {
           />
         </div>
       )}
-    </AutoSyncProvider>
+      </AutoSyncProvider>
+    </LanguageProvider>
   );
 }

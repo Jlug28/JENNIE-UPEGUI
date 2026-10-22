@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { ApprenticeProfile } from '../types/induction';
 import { SENA_AVATARS } from '../data/avatars';
+import { useLanguage } from '../context/LanguageContext';
 
 interface RoleSelectionLandingProps {
   initialProfile: ApprenticeProfile;
@@ -70,6 +71,7 @@ export const RoleSelectionLanding: React.FC<RoleSelectionLandingProps> = ({
   isDarkMode,
   onToggleDarkMode
 }) => {
+  const { language, setLanguage } = useLanguage();
   // Selected tab on mobile/desktop focus
   const [selectedRole, setSelectedRole] = useState<'aprendiz' | 'instructor'>(
     initialRole === 'instructor' ? 'instructor' : 'aprendiz'
@@ -155,6 +157,15 @@ export const RoleSelectionLanding: React.FC<RoleSelectionLandingProps> = ({
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Language Toggle */}
+            <button
+              onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+              className="px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors flex items-center gap-1 shadow-xs"
+              title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+            >
+              <span>🌐</span>
+              <span>{language === 'es' ? 'EN' : 'ES'}</span>
+            </button>
             <button
               onClick={onToggleDarkMode}
               className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors"
